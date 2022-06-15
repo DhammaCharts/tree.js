@@ -62,6 +62,10 @@ tree.on('created', (e, node) => {
 });
 tree.json(structure);
 
+document.getElementById('browse-1').addEventListener('click', () => {
+  alert("test alert")
+});
+
 tree.on('select', e => {
   if (e.tagName === 'SUMMARY') {
     tree.open(e.parentElement);
