@@ -67,9 +67,13 @@ document.getElementById('browse-1').addEventListener('click', () => {
 });
 
 tree.on('select', e => {
-  if (e.tagName === 'SUMMARY') {
-    tree.open(e.parentElement);
-  }
+  if (e.tagName === 'SUMMARY') tree.open(e.parentElement);
+});
+
+let treeIsOpen = false;
+tree.on('select', e => {
+  if (treeIsOpen)
+  alert("Link working !");
 });
 
 function openTree(){
@@ -86,15 +90,11 @@ function openTree(){
     return p;
 }
 
-function redirectOnClick(){
+function setOpenTree(){
     let p = openTree();
-    p.then(function(s) {
-      // click on node to go to page
-      tree.on('select', e => {
-          // window.location.href = 'www.google.com';
-          alert("Link working !");
-      });
+    p.then(function() {
+      treeIsOpen = true;
     });
 }
 
-redirectOnClick()
+setOpenTree()
